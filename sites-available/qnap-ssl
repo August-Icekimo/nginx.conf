@@ -21,10 +21,11 @@ server {
     server_name ts109ii.myqnapcloud.com;
 
     location / {
-      proxy_set_header        Host $host;
-      proxy_set_header        X-Real-IP $remote_addr;
-      proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-      proxy_set_header        X-Forwarded-Proto $scheme;
+	proxy_set_header        Host $host;
+	proxy_set_header        X-Real-IP $remote_addr;
+	proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+	proxy_set_header        X-Forwarded-Proto $scheme;
+	include /etc/nginx/conf.d/naxsi;
         proxy_pass http://nas_page;
         break;
     }
