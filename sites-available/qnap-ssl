@@ -1,6 +1,5 @@
 server {
     listen 443 ssl;
-    ssl on;
     ssl_certificate /etc/acme/ts109ii.myqnapcloud.com/fullchain.cer;
     ssl_certificate_key /etc/acme/ts109ii.myqnapcloud.com/ts109ii.myqnapcloud.com.key;
     ssl_dhparam /etc/ssl/dhparam.pem;
@@ -13,10 +12,10 @@ server {
     ssl_session_tickets off;
     ssl_stapling on;
     ssl_stapling_verify on;
-    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload";
-    add_header X-Frame-Options DENY;
-    add_header X-Content-Type-Options nosniff;
-    add_header X-XSS-Protection "1; mode=block";
+#    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload";
+#    add_header X-Frame-Options DENY;
+#    add_header X-Content-Type-Options nosniff;
+#    add_header X-XSS-Protection "1; mode=block";
 
     server_name ts109ii.myqnapcloud.com;
 
@@ -25,7 +24,7 @@ server {
 	proxy_set_header        X-Real-IP $remote_addr;
 	proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
 	proxy_set_header        X-Forwarded-Proto $scheme;
-	#include /etc/nginx/conf.d/naxsi;
+#	include /etc/nginx/conf.d/naxsi;
         proxy_pass http://nas_page;
         break;
     }
